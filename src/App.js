@@ -1,28 +1,19 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { useLocation, Redirect } from 'react-router-dom';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import TrendingHome from './Trending/Home';
 import TrendingRepos from './Trending/TrendingRepos';
 import TrendingDevelopers from './Trending/TrendingDevelopers';
 import './App.css';
 
 function App() {
-  const location = useLocation();
-  useEffect(() => {
-    console.log('Location changed', location);
-    if (location.pathname !== '/trending/developers') {
-      <Redirect to='/trending' />;
-    }
-  }, [location]);
   let routes = (
     <Switch>
-      <Route path='/'>
+      <Redirect exact from='/' to='/trending' />
+      <Route exact path='/trending'>
         <TrendingRepos />
       </Route>
-      <Route path='/trending'>
-        <TrendingRepos />
-      </Route>
-      <Route path='/trending/developers'>
+      <Route exact path='/trending/developers'>
         <TrendingDevelopers />
       </Route>
     </Switch>

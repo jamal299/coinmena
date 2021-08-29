@@ -11,7 +11,7 @@ const navigation = [
   },
   {
     name: 'Developers',
-    href: '/trending',
+    href: '/trending/developers',
     current: false,
     path: '/trending/developers',
   },
