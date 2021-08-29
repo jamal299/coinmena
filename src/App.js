@@ -1,23 +1,36 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useLocation, Redirect } from 'react-router-dom';
+import TrendingHome from './Trending/Home';
+import TrendingRepos from './Trending/TrendingRepos';
+import TrendingDevelopers from './Trending/TrendingDevelopers';
 import './App.css';
 
 function App() {
+  const location = useLocation();
+  useEffect(() => {
+    console.log('Location changed', location);
+    if (location.pathname !== '/trending/developers') {
+      <Redirect to='/trending' />;
+    }
+  }, [location]);
+  let routes = (
+    <Switch>
+      <Route path='/'>
+        <TrendingRepos />
+      </Route>
+      <Route path='/trending'>
+        <TrendingRepos />
+      </Route>
+      <Route path='/trending/developers'>
+        <TrendingDevelopers />
+      </Route>
+    </Switch>
+  );
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App bg-gray-900'>
+      <TrendingHome />
+      {routes}
     </div>
   );
 }
