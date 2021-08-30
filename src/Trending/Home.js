@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -26,8 +25,10 @@ function TrendingHome() {
 
   return (
     <div>
-      <p class='text-5xl pt-10  text-gray-400 font-semibold'>Trending</p>
-      <p class='text-xl py-4 text-gray-400'>
+      <p class='text-5xl pt-10  text-gray-400 font-semibold text-center'>
+        Trending
+      </p>
+      <p class='text-xl py-4 text-gray-400 text-center'>
         See what the GitHub community is most excited about today
       </p>
       <Disclosure as='nav' className='mt-8'>
@@ -39,7 +40,41 @@ function TrendingHome() {
                   {/* Mobile menu button*/}
                   <Disclosure.Button className='inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'>
                     <span className='sr-only'>Open main menu</span>
-                    {open ? <span> xIcon</span> : <span>Menu Icon</span>}
+                    {open ? (
+                      <span>
+                        <svg
+                          xmlns='http://www.w3.org/2000/svg'
+                          class='h-4 w-4'
+                          fill='none'
+                          viewBox='0 0 24 24'
+                          stroke='currentColor'
+                        >
+                          <path
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                            stroke-width='2'
+                            d='M6 18L18 6M6 6l12 12'
+                          />
+                        </svg>
+                      </span>
+                    ) : (
+                      <span>
+                        <svg
+                          xmlns='http://www.w3.org/2000/svg'
+                          class='h-4 w-4'
+                          fill='none'
+                          viewBox='0 0 24 24'
+                          stroke='currentColor'
+                        >
+                          <path
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                            stroke-width='2'
+                            d='M4 6h16M4 12h16M4 18h16'
+                          />
+                        </svg>
+                      </span>
+                    )}
                   </Disclosure.Button>
                 </div>
                 <div className='flex-1 flex items-center justify-center sm:items-stretch sm:justify-start'>
@@ -75,7 +110,7 @@ function TrendingHome() {
                     href={item.href}
                     className={classNames(
                       item.path === pathname
-                        ? 'bg-gray-900 text-white'
+                        ? 'bg-blue-600 text-white'
                         : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                       'block px-3 py-2 rounded-md text-base font-medium'
                     )}
