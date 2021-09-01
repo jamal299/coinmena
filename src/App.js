@@ -11,6 +11,7 @@ function App() {
   let routes = (
     <Switch>
       <Redirect exact from='/' to='/trending' />
+      <Redirect exact from='/coinmena' to='/trending' />
       <Route exact path='/trending'>
         <QueryClientProvider client={queryClient}>
           <TrendingRepos />
